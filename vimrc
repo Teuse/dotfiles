@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
@@ -18,7 +18,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Gundo'
-" Plugin 'gilligan/vim-lldb'
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
@@ -28,6 +28,7 @@ Plugin 'teuse/ogrep'
 Plugin 'teuse/hopper'
 Plugin 'teuse/nimake'
 
+" Plugin 'gilligan/vim-lldb'
 " Plugin 'scrooloose/syntastic'
 " Plugin 'rdnetto/YCM-Generator'
 
@@ -79,7 +80,7 @@ inoremap jk <esc>
 vnoremap jkj <esc>
 
 " Quick edit .vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Disable Swap files
@@ -238,6 +239,10 @@ noremap k gk
 " Disable highlight when <leader><cr> is pressed
 noremap <silent> <leader>n :noh<cr>
 
+" replace include"" with include<>
+noremap ,. 0f"xi<<Esc>f"xa><Esc>j
+
+
 " Smart way to move between windows
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
@@ -268,6 +273,9 @@ noremap L  $
 " Fast moving in quckfix window
 noremap <leader>n :cnext<cr>
 noremap <leader>p :cprevious<cr>
+
+noremap < :tabp<cr>
+noremap > :tabn<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -346,11 +354,26 @@ nnoremap <F5> :GundoToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => AIRLINE 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme='murmur'
+
+let g:airline_section_y=''
+let g:airline_section_error=''
+let g:airline_section_warning=''
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled  = 1
+
+let g:airline#extensions#tabline#show_buffers = 0
+let airline#extensions#tabline#tab_min_count = 2
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set wildignore+=*/tmp/*,*/build*/*,*.so,*.swp,*.zip
-
 
 nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <leader>t :YcmCompleter GetType<CR>
