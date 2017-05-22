@@ -26,7 +26,7 @@ Plugin 'b4winckler/vim-objc'
 
 Plugin 'teuse/ogrep'
 Plugin 'teuse/hopper'
-Plugin 'teuse/nimake'
+Plugin 'teuse/vimake'
 
 " Plugin 'gilligan/vim-lldb'
 " Plugin 'scrooloose/syntastic'
@@ -363,7 +363,7 @@ let g:airline_section_error=''
 let g:airline_section_warning=''
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#branch#enabled  = 1
+let g:airline#extensions#branch#enabled  = 0
 
 let g:airline#extensions#tabline#show_buffers = 0
 let airline#extensions#tabline#tab_min_count = 2
@@ -381,7 +381,12 @@ nnoremap <leader>t :YcmCompleter GetType<CR>
 " Open ycm conf files without confirmation
 let g:ycm_extra_conf_globlist = ['~/Development/CDevelop/*','~/NIBuild/*']
 " disable syntags checks
-let g:ycm_show_diagnostics_ui = 0
+let g:ycm_show_diagnostics_ui = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ctrlp 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Search from current directory instead of project root
 let g:ctrlp_working_path_mode = 0
