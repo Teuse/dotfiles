@@ -227,7 +227,6 @@ set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, files, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -274,8 +273,8 @@ noremap L  $
 noremap <leader>n :cnext<cr>
 noremap <leader>p :cprevious<cr>
 
-noremap < :tabp<cr>
-noremap > :tabn<cr>
+noremap { :tabp<cr>
+noremap } :tabn<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -345,6 +344,8 @@ noremap <leader>P    "+P
 "C++ style seperator
 nnoremap <leader>--   <CR>I//---------------------------------------------------------------------<CR><CR><esc>
 
+" nnoremap #  0f"xi<<esc>f"xa><esc>j
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUNDO
@@ -359,7 +360,7 @@ nnoremap <F5> :GundoToggle<CR>
 let g:airline_theme='murmur'
 
 let g:airline_section_y=''
-let g:airline_section_error=''
+" let g:airline_section_error=''
 let g:airline_section_warning=''
 
 let g:airline#extensions#tabline#enabled = 1
@@ -382,6 +383,9 @@ nnoremap <leader>t :YcmCompleter GetType<CR>
 let g:ycm_extra_conf_globlist = ['~/Development/CDevelop/*','~/NIBuild/*']
 " disable syntags checks
 let g:ycm_show_diagnostics_ui = 1
+
+let g:ycm_autoclose_preview_window_after_insertion  = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
