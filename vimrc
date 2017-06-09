@@ -342,7 +342,8 @@ noremap <leader>p    "+p
 noremap <leader>P    "+P
 
 "C++ style seperator
-nnoremap <leader>--   <CR>I//---------------------------------------------------------------------<CR><CR><esc>
+nnoremap <leader>--   <CR>I//-----------------------------------------------------------------------------<CR><CR><esc>
+
 
 " nnoremap #  0f"xi<<esc>f"xa><esc>j
 
