@@ -19,6 +19,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-fugitive'
+Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
