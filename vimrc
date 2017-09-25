@@ -359,12 +359,17 @@ nnoremap <F5> :GundoToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => AIRLINE 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 let g:airline_theme='murmur'
 
-let g:airline_section_y=''
+" let g:airline_section_y=''
 " let g:airline_section_error=''
 let g:airline_section_warning=''
 
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled  = 0
 
