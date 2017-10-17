@@ -10,6 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-repeat'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -240,8 +241,10 @@ noremap k gk
 noremap <silent> <leader>n :noh<cr>
 
 " replace include"" with include<>
-noremap ,. 0f"xi<<Esc>f"xa><Esc>j
-
+nnoremap <silent> <Plug>RefactorInclude 0f"xi<<Esc>f"xa><Esc>j
+\:call repeat#set("\<Plug>RefactorInclude")<CR>
+nmap ,. <Plug>RefactorInclude
+" noremap ,. 0f"xi<<Esc>f"xa><Esc>j
 
 " Smart way to move between windows
 noremap <C-j> <C-W>j
@@ -344,9 +347,6 @@ noremap <leader>P    "+P
 
 "C++ style seperator
 nnoremap <leader>--   <CR>I//-----------------------------------------------------------------------------<CR><CR><esc>
-
-
-" nnoremap #  0f"xi<<esc>f"xa><esc>j
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
