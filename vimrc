@@ -21,12 +21,16 @@ Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-fugitive'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'tpope/vim-surround'
+Plugin 'mileszs/ack.vim'
 
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
 Plugin 'b4winckler/vim-objc'
 
-Plugin 'teuse/ogrep'
+" Plugin 'teuse/ogrep'
 Plugin 'teuse/hopper'
 Plugin 'teuse/vimake'
 
@@ -53,6 +57,10 @@ set autoread
 
 " Disable auto-comment on new lines
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" remove trailing white spaces on save
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -191,6 +199,11 @@ set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+
+" Set tab-width per file
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+autocmd Filetype pp   setlocal ts=2 sts=2 sw=2
+
 
 " Linebreak on 500 characters
 set lbr
@@ -357,7 +370,18 @@ nnoremap <F5> :GundoToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => AIRLINE 
+" => Ack
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+nnoremap <Leader>a :Ack! -i<Space>
+nnoremap <Leader>aa :Ack! -i <C-R><C-W><Space>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => AIRLINE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -389,14 +413,14 @@ nnoremap <leader>t :YcmCompleter GetType<CR>
 " Open ycm conf files without confirmation
 let g:ycm_extra_conf_globlist = ['~/Development/CDevelop/*','~/NIBuild/*']
 " disable syntags checks
-let g:ycm_show_diagnostics_ui = 1
+let g:ycm_show_diagnostics_ui = 0
 
 let g:ycm_autoclose_preview_window_after_insertion  = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_comiwletion = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ctrlp 
+" => Ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Search from current directory instead of project root
@@ -464,3 +488,12 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
