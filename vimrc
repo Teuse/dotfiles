@@ -24,6 +24,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'peterhoeg/vim-qml'
@@ -57,10 +58,6 @@ set autoread
 
 " Disable auto-comment on new lines
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" remove trailing white spaces on save
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -370,14 +367,31 @@ nnoremap <F5> :GundoToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack
+" => VIM BETTER WHITESPACES
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap ± :StripWhitespace<CR>
+autocmd BufEnter * EnableStripWhitespaceOnSave
+autocmd BufEnter * CurrentLineWhitespaceOff soft
+"highlight ExtraWhitespace ctermbg=<desired_color>
+highlight ExtraWhitespace ctermbg=darkgray
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => The Silver Searcher
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --nogroup --nocolor'
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  nnoremap <Leader>a :Ack! -i<Space>
+  noremap <Leader>aa :Ack! -i <C-R><C-W><Space>
 endif
 
-nnoremap <Leader>a :Ack! -i<Space>
-nnoremap <Leader>aa :Ack! -i <C-R><C-W><Space>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
