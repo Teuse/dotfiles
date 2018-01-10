@@ -3,9 +3,9 @@
 # in ~/dotfiles
 
 #-------------------------------------------------------------------------------
-dir=~/dotfiles                    # dotfiles directory
+dir=~/Develop/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="vimrc gitignore_global lldbinit"    # list of files/folders to symlink in homedir
+files="vimrc gitignore_global lldbinit inputrc"    # list of files/folders to symlink in homedir
 
 #-------------------------------------------------------------------------------
 echo "Creating $olddir for backup of any existing dotfiles in ~"
