@@ -96,6 +96,11 @@ set noswapfile
 " If using swap files, than store this files in this folder
 set directory^=$HOME/.vim/tmp//
 
+" Go to last open buffer
+" nnoremap <Tab> :b#<cr>
+" nnoremap <C-i> :bprev<cr>
+" nnoremap <C-o> :bnext<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -365,6 +370,12 @@ nnoremap <leader>--   <CR>I//---------------------------------------------------
 
 nnoremap <F5> :GundoToggle<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => CLANG FORMAT
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let g:clang_format#auto_format = 1
+nnoremap <leader>cf :ClangFormat <cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM BETTER WHITESPACES
