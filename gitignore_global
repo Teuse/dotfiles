@@ -6,3 +6,4 @@
 *.autosave
 build*/
 *.pyc
+*.vscode/

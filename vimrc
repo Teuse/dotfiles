@@ -13,38 +13,33 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-fugitive'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rhysd/vim-clang-format'
-Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+" Plugin 'easymotion/vim-easymotion'
+" Plugin 'tpope/vim-surround'
 
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
-Plugin 'b4winckler/vim-objc'
+" Plugin 'b4winckler/vim-objc'
+" Plugin 'vim-ruby/vim-ruby'
 
-" Plugin 'teuse/ogrep'
 Plugin 'teuse/hopper'
 Plugin 'teuse/vimake'
-
-" Plugin 'gilligan/vim-lldb'
-" Plugin 'scrooloose/syntastic'
-" Plugin 'rdnetto/YCM-Generator'
+" Plugin 'teuse/ogrep'
 
 call vundle#end()
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" => General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader   = "\<space>"
 
 " Sets how many lines of history VIM has to remember
 set history=700
@@ -55,22 +50,14 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
+" Reload buffer on entering a buffer
+au FocusGained,BufEnter * :silent! !
+
+" Save on buffer switch
+au FocusLost,WinLeave * :silent! w
 
 " Disable auto-comment on new lines
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader   = "\<space>"
-
-" Fast saving
-nnoremap <leader>w :wa<cr>
-
-" Newline on Enter on normal mode
-nnoremap <CR> o<Esc>
-
-" The key 'u' is UNDO, therefore 'U' makes sense for REDO
-nnoremap U <C-r>
 
 " Disable Ex-mode.. dont need that mode
 noremap Q <Nop>
@@ -82,44 +69,27 @@ set number
 " the quickfix window should always have the full width
 autocmd filetype qf wincmd J
 
-" exit edit mode
-inoremap jk <esc>
-vnoremap jkj <esc>
-
 " Quick edit .vimrc
 nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Disable Swap files
-set noswapfile
-
 " If using swap files, than store this files in this folder
-set directory^=$HOME/.vim/tmp//
-
-" Go to last open buffer
-" nnoremap <Tab> :b#<cr>
-" nnoremap <C-i> :bprev<cr>
-" nnoremap <C-o> :bnext<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set directory=$HOME/.vim/swapfiles//
+set backupdir=$HOME/.vim/backups//
 
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-"Always show current position
-set ruler
+set so=10
 
 " Height of the command bar
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+" set hidden
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
+
+" Automatically wrap left and right
 set whichwrap+=<,>,h,l
 
 " Search options
@@ -132,19 +102,11 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 
-" Search and Replace
-nnoremap <leader>sr :%s//gc <left><left><left><left>
-
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
 " For regular expressions turn magic on
 set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
 
 " No annoying sound on errors
 set noerrorbells
@@ -157,10 +119,33 @@ set splitbelow
 set splitright
 
 " Highlight current cursor position by underlining the current line
-hi CursorLine   cterm=underline
+hi CursorLine cterm=underline
 nnoremap <Leader>c :set cursorline!<CR>
 set cursorline
 
+" Visual mode pressing * or # searches for the current selection
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" The key 'u' is UNDO, therefore 'U' makes sense for REDO
+nnoremap U <C-r>
+
+" Newline on Enter on normal mode
+nnoremap <CR> o<Esc>
+
+" Fast saving
+nnoremap <leader>w :wa<cr>
+
+" exit edit mode
+" inoremap jk <esc>
+" vnoremap jkj <esc>
+
+" Search and Replace
+nnoremap <leader>sr :%s//gc <left><left><left><left>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,21 +158,15 @@ syntax enable
 colorscheme desert
 set background=dark
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
- endif
-
 " Set utf8 as standard encoding and en_US as the standard
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-
+" override search color
+" hi Search ctermbg=gray
+hi Search ctermfg=black
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -211,8 +190,8 @@ autocmd Filetype pp   setlocal ts=2 sts=2 sw=2
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent
+set smartindent
 set wrap "Wrap lines
 
 " Turn off auto-indent when pasting text
@@ -226,22 +205,13 @@ vnoremap <Leader>:: :Tabularize /:\zs<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual mode
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -259,7 +229,6 @@ noremap <silent> <leader>n :noh<cr>
 nnoremap <silent> <Plug>RefactorInclude 0f"xi<<Esc>f"xa><Esc>j
 \:call repeat#set("\<Plug>RefactorInclude")<CR>
 nmap ,. <Plug>RefactorInclude
-" noremap ,. 0f"xi<<Esc>f"xa><Esc>j
 
 " Smart way to move between windows
 noremap <C-j> <C-W>j
@@ -272,8 +241,9 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
 " Remember info about open buffers on close
-set viminfo^=%
+" set viminfo^=%,n$HOME/.vim/viminfo
 
 " Center curser on screen after jump
 nnoremap n nzz
@@ -301,7 +271,7 @@ noremap } :tabn<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>e :Explore<CR>
 
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
+" nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 " change word to upper case
 noremap <c-u> <esc>mzviwU<esc>`z
@@ -383,7 +353,7 @@ nnoremap <leader>cf :ClangFormat <cr>
 nnoremap ± :StripWhitespace<CR>
 autocmd BufEnter * EnableStripWhitespaceOnSave
 autocmd BufEnter * CurrentLineWhitespaceOff soft
-"highlight ExtraWhitespace ctermbg=<desired_color>
+" highlight ExtraWhitespace ctermbg=<desired_color>
 highlight ExtraWhitespace ctermbg=darkgray
 
 
