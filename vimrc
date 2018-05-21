@@ -74,7 +74,8 @@ nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " If using swap files, than store this files in this folder
-set directory=$HOME/.vim/swapfiles//
+set noswapfile
+" set directory=$HOME/.vim/swapfiles//
 set backupdir=$HOME/.vim/backups//
 
 " Set 7 lines to the cursor - when moving vertically using j/k
