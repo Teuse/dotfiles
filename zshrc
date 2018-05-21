@@ -70,11 +70,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 alias ll='ls -la'
-alias vim='/usr/local/Cellar/macvim/8.0-137/MacVim.app/Contents/bin/mvim -v'
-alias my="cd ~/NIBuild/mystuff"
+alias vim='mvim -v'
 
 export EDITOR=vim
-export NIBUILD=$HOME/NIBuild
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
