@@ -24,6 +24,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 " Plugin 'easymotion/vim-easymotion'
 " Plugin 'tpope/vim-surround'
+Plugin 'toyamarinyon/vim-swift'
 
 Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
@@ -139,7 +140,7 @@ nnoremap U <C-r>
 nnoremap <CR> o<Esc>
 
 " Fast saving
-nnoremap <leader>w :wa<cr>
+nnoremap <leader>w :wa!<cr>
 
 " exit edit mode
 " inoremap jk <esc>
