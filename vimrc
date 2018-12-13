@@ -11,7 +11,8 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-repeat'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'jerrymarino/iCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -30,12 +31,20 @@ Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
 " Plugin 'b4winckler/vim-objc'
 " Plugin 'vim-ruby/vim-ruby'
+Plugin 'milch/vim-fastlane'
+Plugin 'leshill/vim-json'
 
 Plugin 'teuse/hopper'
 Plugin 'teuse/vimake'
 " Plugin 'teuse/ogrep'
 
 call vundle#end()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:python_host_prog  = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General settings
@@ -71,8 +80,12 @@ set number
 autocmd filetype qf wincmd J
 
 " Quick edit .vimrc
-nnoremap <leader>ev :tabnew $MYVIMRC<cr>
+nnoremap <leader>ev :tabnew $HOME/.vimrc<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Quick edit .zshrc
+nnoremap <leader>ez :tabnew $HOME/.zshrc<cr>
+nnoremap <leader>sz :source $HOME/.zshrc<cr>
 
 " If using swap files, than store this files in this folder
 set noswapfile
@@ -140,7 +153,7 @@ nnoremap U <C-r>
 nnoremap <CR> o<Esc>
 
 " Fast saving
-nnoremap <leader>w :wa!<cr>
+nnoremap <leader>w :wa<cr>
 
 " exit edit mode
 " inoremap jk <esc>
@@ -149,6 +162,7 @@ nnoremap <leader>w :wa!<cr>
 " Search and Replace
 nnoremap <leader>sr :%s//gc <left><left><left><left>
 
+nnoremap <leader>json :%!python -m json.tool<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -179,9 +193,9 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" 1 tab == 3 spaces
+set shiftwidth=3
+set tabstop=3
 
 " Set tab-width per file
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
@@ -373,6 +387,8 @@ if executable('ag')
 
   nnoremap <Leader>a :Ack! -i<Space>
   noremap <Leader>aa :Ack! -i <C-R><C-W><Space>
+else
+  echoerr "Ack not installed: brew install the_silver_searcher"
 endif
 
 
