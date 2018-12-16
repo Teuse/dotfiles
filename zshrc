@@ -72,9 +72,9 @@ prompt_context(){}
 # User configuration
 
 alias ll='ls -la'
-alias vim='mvim -v'
+alias vim='nvim'
 
-export EDITOR=vim
+export EDITOR=nvim
 
 
 # export MANPATH="/usr/local/man:$MANPATH"
