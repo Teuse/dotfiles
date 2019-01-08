@@ -153,7 +153,7 @@ nnoremap U <C-r>
 nnoremap <CR> o<Esc>
 
 " Fast saving
-nnoremap <leader>w :wa<cr>
+nnoremap <leader>w :wa!<cr>
 
 " exit edit mode
 " inoremap jk <esc>
