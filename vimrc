@@ -26,6 +26,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 " Plugin 'easymotion/vim-easymotion'
 " Plugin 'tpope/vim-surround'
 Plugin 'toyamarinyon/vim-swift'
+Plugin 'fatih/vim-go'
 
 Plugin 'peterhoeg/vim-qml'
 Plugin 'artoj/qmake-syntax-vim'
@@ -33,6 +34,7 @@ Plugin 'artoj/qmake-syntax-vim'
 " Plugin 'vim-ruby/vim-ruby'
 Plugin 'milch/vim-fastlane'
 Plugin 'leshill/vim-json'
+Plugin 'vapor-community/vim-leaf'
 
 Plugin 'teuse/hopper'
 Plugin 'teuse/vimake'
@@ -366,12 +368,12 @@ nnoremap <leader>cf :ClangFormat <cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM BETTER WHITESPACES
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ± :StripWhitespace<CR>
-autocmd BufEnter * EnableStripWhitespaceOnSave
-autocmd BufEnter * CurrentLineWhitespaceOff soft
-" highlight ExtraWhitespace ctermbg=<desired_color>
 highlight ExtraWhitespace ctermbg=darkgray
-
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:current_line_whitespace_disabled_soft=1
+let g:strip_whitespace_confirm=0
+" autocmd FileType * EnableStripWhitespaceOnSave
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => The Silver Searcher
@@ -501,12 +503,4 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
-
-
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
 
