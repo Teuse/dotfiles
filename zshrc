@@ -41,7 +41,7 @@ export EDITOR=nvim
 export PATH="$HOME/.fastlane/bin:$PATH"
 
 # GO
-export GOPATH="${HOME}/.go:${HOME}/DevelopGo"
+export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
