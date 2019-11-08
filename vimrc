@@ -127,7 +127,9 @@ nnoremap <leader>w :wa!<cr>
 " Search and Replace
 nnoremap <leader>sr :%s//gc <left><left><left><left>
 
-nnoremap <leader>json :%!python -m json.tool<CR>
+nnoremap <leader>json :%!python3 -m json.tool<CR>
+
+nnoremap <leader>py <Esc>:w<CR>:!clear;python3 %<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
