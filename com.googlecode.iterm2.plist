@@ -6,6 +6,8 @@
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -69,6 +71,8 @@
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>2129 236 775 311 0 0 3440 1440 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>1520 983 400 129 0 0 3440 1440 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>1410 786 620 392 0 0 3440 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -76,7 +80,9 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>1415 495 592 584 0 0 3440 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 986 3440 454 0 0 3440 1417 </string>
+	<string>0 400 650 477 0 0 3440 1440 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>516 135 650 477 0 0 3440 1440 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1746,16 +1752,22 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.2.9</string>
-		<string>3.3.0</string>
+		<string>3.3.4</string>
+		<string>3.3.8</string>
 		<string>3.3.1</string>
+		<string>3.3.3</string>
+		<string>3.3.5</string>
+		<string>3.3.7</string>
+		<string>3.3.0</string>
+		<string>3.3.2</string>
+		<string>3.2.9</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {3440, 1440}}</string>
 		<key>topLeft</key>
-		<string>{2239, 1216}</string>
+		<string>{1904, 1225}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -1764,9 +1776,9 @@
 	<key>NoSyncInstallationId</key>
 	<string>C1A95B3B-388C-43A2-A312-AA7BB2282B0A</string>
 	<key>NoSyncLastTipTime</key>
-	<real>587372965.23403299</real>
+	<real>589360664.76688004</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>44</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>586764771.44438601</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -2155,6 +2167,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>currentTab.window</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>id</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -2188,6 +2208,14 @@
 				<true/>
 				<key>name</key>
 				<string>currentTab.currentSession.commandLine</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>number</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2260,9 +2288,25 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
+				<false/>
+				<key>name</key>
+				<string>title</string>
+				<key>nonterminalContext</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
 				<string>tmuxWindowTitle</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>title</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2319,6 +2363,14 @@
 				<true/>
 				<key>name</key>
 				<string>currentSession.name</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>window</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2531,6 +2583,7 @@
 		<string>0075</string>
 		<string>0076</string>
 		<string>0077</string>
+		<string>0078</string>
 	</array>
 	<key>PointerActions</key>
 	<dict>
@@ -2576,11 +2629,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-08-14T07:30:34Z</date>
+	<date>2020-02-13T12:12:33Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>3660585889</integer>
 	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
@@ -2590,7 +2645,7 @@
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1565176320</real>
+	<real>1573198592</real>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
@@ -2600,7 +2655,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.1</string>
+	<string>3.3.8</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
