@@ -49,3 +49,33 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 # export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export PATH=${JAVA_HOME}/bin:$PATH
+
+
+########################################################3
+# DAIMLER TSS
+export http_proxy="localhost:3128"
+export https_proxy="localhost:3128"
+export no_proxy="localhost, 127.0.0.1"
+
+
+# function proxyon() {
+#    export http_proxy="localhost:3128"
+#    export https_proxy="localhost:3128"
+#    export no_proxy="localhost, 127.0.0.1"
+#    git config --global https.proxy https://localhost:3128
+#    git config --global http.proxy http://localhost:3128
+#    npm config --global set proxy http://localhost:3128
+#    npm config --global set https-proxy http://localhost:3128
+#    echo "PROXY is ON"
+# }
+#
+# function proxyoff() {
+#    unset http_proxy
+#    unset https_proxy
+#    unset no_proxy
+#    npm config --global rm proxy
+#    npm config --global rm https-proxy
+#    git config --global --unset http.proxy
+#    git config --global --unset https.proxy
+#    echo "PROXY is OFF"
+# }
