@@ -1,3 +1,5 @@
+ZSH_DISABLE_COMPFIX="true"
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export ZSH=$HOME/.oh-my-zsh
@@ -18,7 +20,7 @@ ZSH_THEME="agnoster"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git)
+plugins=(git colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -32,8 +34,14 @@ prompt_context(){}
 alias ll='ls -la'
 alias vim='nvim'
 alias dd='cd $HOME/Library/Developer/Xcode/DerivedData'
-alias cctouch='cd $HOME/Develop/cctouch/5100_Code_Base/client/CCTouch'
-alias i18n='cd $HOME/Develop/cctouch_i18n'
+# alias cctouch='cd $HOME/Develop/cctouch/5100_Code_Base/client/CCTouch'
+# alias i18n='cd $HOME/Develop/cctouch_i18n'
+
+# kubectl
+source <(kubectl completion zsh)
+
+# Helm 2
+# export PATH="/usr/local/opt/helm@2/bin:$PATH"
 
 export EDITOR=nvim
 
@@ -47,15 +55,15 @@ export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # JAVA
 # export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export PATH=${JAVA_HOME}/bin:$PATH
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+# export PATH=${JAVA_HOME}/bin:$PATH
 
 
 ########################################################3
 # DAIMLER TSS
-export http_proxy="localhost:3128"
-export https_proxy="localhost:3128"
-export no_proxy="localhost, 127.0.0.1"
+# export http_proxy="localhost:3128"
+# export https_proxy="localhost:3128"
+# export no_proxy="localhost, 127.0.0.1"
 
 
 # function proxyon() {
